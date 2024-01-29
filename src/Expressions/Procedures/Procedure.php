@@ -115,9 +115,9 @@ abstract class Procedure implements QueryConvertible
      *
      * @param ListType|MapType|StringType $expression An expression that returns a list
      */
-    public static function collect($expression): Collect
+    public static function collect($expression, $isDistinct = false): Collect
     {
-        return new Collect(self::toAnyType($expression));
+        return new Collect(self::toAnyType($expression), $isDistinct);
     }
 
     /**

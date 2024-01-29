@@ -34,6 +34,11 @@ final class Collect extends Procedure implements BooleanType
     private AnyType $expression;
 
     /**
+     * @var bool
+     */
+    private bool $isDistinct = false;
+
+    /**
      * The signatures of the "collect()" function are:
      * - "collect(input :: LIST? OF ANY?) :: (BOOLEAN?)" - to check whether a list is empty
      * - "collect(input :: MAP?) :: (BOOLEAN?)" - to check whether a map is empty
@@ -43,9 +48,10 @@ final class Collect extends Procedure implements BooleanType
      *
      * @internal This method is not covered by the backwards compatibility promise of php-cypher-dsl
      */
-    public function __construct(AnyType $expressions)
+    public function __construct(AnyType $expressions, bool $isDistinct = false)
     {
         $this->expression = $expressions;
+        $this->isDistinct = $isDistinct;
     }
 
     /**
@@ -53,7 +59,7 @@ final class Collect extends Procedure implements BooleanType
      */
     protected function getSignature(): string
     {
-        return "collect(%s)";
+        return sprintf("collect(%s%%s)", $this->isDistinct ? "" : "DISTINCT ");
     }
 
     /**
