@@ -1,5 +1,5 @@
 {
-  "name": "wikibase-solutions/php-cypher-dsl",
+  "name": "i-kadar/php-cypher-dsl",
   "description": "A query builder for the Cypher query language written in PHP",
   "type": "library",
   "keywords": [
