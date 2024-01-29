@@ -59,7 +59,7 @@ final class Collect extends Procedure implements BooleanType
      */
     protected function getSignature(): string
     {
-        return sprintf("collect(%s%%s)", $this->isDistinct ? "" : "DISTINCT ");
+        return sprintf("collect(%s%%s)", $this->isDistinct ? "DISTINCT " :  "");
     }
 
     /**
