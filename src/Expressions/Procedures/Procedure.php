@@ -108,6 +108,19 @@ abstract class Procedure implements QueryConvertible
     }
 
     /**
+     * Calls the "collect()" function. The signatures of the "collect()" function are:
+     * - isEmpty(input :: LIST? OF ANY?) :: (BOOLEAN?) - to check whether a list is empty
+     * - isEmpty(input :: MAP?) :: (BOOLEAN?) - to check whether a map is empty
+     * - isEmpty(input :: STRING?) :: (BOOLEAN?) - to check whether a string is empty.
+     *
+     * @param ListType|MapType|StringType $expression An expression that returns a list
+     */
+    public static function collect($expression): Collect
+    {
+        return new Collect(self::toAnyType($expression));
+    }
+
+    /**
      * Calls the "none()" function. The signature of the "none()" function is "none(variable :: VARIABLE IN list :: LIST OF ANY? WHERE predicate :: ANY?) :: (BOOLEAN?)".
      *
      * @param string|Variable                               $variable  A variable that can be used from within the predicate
